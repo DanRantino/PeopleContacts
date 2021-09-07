@@ -1,0 +1,1 @@
+ -Dspring.datasource.url=jdbc:postgresql://ec2-54-156-60-12.compute-1.amazonaws.com:5432/dfe0f8kdq4nfef:5432
