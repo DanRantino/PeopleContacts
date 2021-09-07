@@ -20,7 +20,9 @@ public class PeopleController {
     private PeopleRepository peopleRepository;
 
     @GetMapping("/people")
-    public List<People> getAllPeople(){return peopleRepository.findAll();}
+    public List<People> getAllPeople(){
+        System.out.println("Aqui");
+        return peopleRepository.findAll();}
 
     @GetMapping("/people/{id}")
     public ResponseEntity<People> getOnePeople(@PathVariable(value = "id") Integer id) throws NotFoundException {
