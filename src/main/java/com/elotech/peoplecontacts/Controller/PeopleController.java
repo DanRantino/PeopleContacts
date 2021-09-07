@@ -12,29 +12,31 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@SpringBootApplication
 //@CrossOrigin(origins = "*")
-@RequestMapping("/")
+@RequestMapping("/people")
 public class PeopleController {
 
     @Autowired
     private PeopleRepository peopleRepository;
 
-    @GetMapping("/people")
-    public List<People> getAllPeople(){
-        System.out.println("Aqui");
-        return peopleRepository.findAll();}
+    @GetMapping
+    public String getAllPeople(){
+        //return peopleRepository.findAll()List<People>;
+        return "Teste"
+        }
 
-    @GetMapping("/people/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<People> getOnePeople(@PathVariable(value = "id") Integer id) throws NotFoundException {
        People people = peopleRepository.findById(id)
                .orElseThrow(()-> new NotFoundException("Pessoa não encontrada com o id ::" + id));
         return ResponseEntity.ok(people);
     }
 
-    @PostMapping("/people")
+    @PostMapping
     public People createPeople( @RequestBody People people){return peopleRepository.save(people);}
 
-    @PutMapping("/people")
+    @PutMapping
     public ResponseEntity<People> updatePeople (@RequestBody People people) throws NotFoundException {
         peopleRepository.findById(people.getId())
                 .orElseThrow(()-> new NotFoundException("Pessoa não encontrada com o id ::" + people.getId()));
@@ -42,7 +44,7 @@ public class PeopleController {
         return ResponseEntity.ok(newPeople);
     }
 
-    @DeleteMapping("/people/{id}")
+    @DeleteMapping("/{id}")
     public Map<String, Boolean> deleteRoom (@PathVariable(value = "id") Integer id) throws NotFoundException {
         peopleRepository.findById(id).orElseThrow(()-> new NotFoundException("Pessoa não encontrada com o id ::"+id));
         peopleRepository.deleteById(id);
