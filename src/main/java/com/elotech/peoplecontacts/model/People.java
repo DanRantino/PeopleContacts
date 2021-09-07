@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Required;
 
 import javax.persistence.*;
 import javax.persistence.Id;
@@ -20,10 +22,12 @@ public class People {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int Id;
     @Column
+    @NotNull
     private String Nome;
     @Column
     private long CPF;
     @Column
+    @NotNull
     private String dataNasc;
 
 }
