@@ -29,6 +29,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.4'
 	implementation group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '7.0.28'
 	implementation group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.9.0'
+	compileOnly group: 'com.github.jsimone', name: 'webapp-runner', version: '9.0.27.1'
 }
 
 test {
